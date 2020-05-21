@@ -65,11 +65,18 @@ const path = require('path')
 let window1, window2;
 
 function createWindow1 () {
-  window1 = new BrowserWindow({width: 800,height: 600, webPreferences: {
+  window1 = new BrowserWindow({
+    width: 100,
+    height: 50,
+    x: 0,
+    y: 0,
+    frame: false,
+    webPreferences: {
       nodeIntegration: true
     }})
   window1.loadFile(`./window1.html`)
-  window1.webContents.openDevTools()
+  window1.setAlwaysOnTop(true, "floating", 1);
+  // window1.webContents.openDevTools()
   window1.on('closed', function () {
     window1 = null
   })

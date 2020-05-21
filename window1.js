@@ -1,10 +1,11 @@
 const ipcRenderer = require('electron').ipcRenderer
 
-let name = document.getElementById('name');
 
+let tr = true;
 ButtonSendName = document.getElementById('sendName');
 ButtonSendName.addEventListener('click', (event) => {
-    ipcRenderer.send('nameMsg', name.value);
+    tr = !tr;
+    ipcRenderer.send('nameMsg', tr);
 })
 
 ipcRenderer.on('nameReply', (event, arg) => {
