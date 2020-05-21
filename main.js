@@ -76,11 +76,21 @@ function createWindow1 () {
   return window1
 }
 function createWindow2 () {
-  window2 = new BrowserWindow({width: 1000, height: 600, webPreferences: {
+  window2 = new BrowserWindow({
+    width: 1000,
+    height: 600,
+    transparent: true,
+    webPreferences: {
       nodeIntegration: true
     }})
   window2.loadFile(`./window2.html`)
-  window2.webContents.openDevTools()
+  window2.maximize();
+  window2.setIgnoreMouseEvents(true);
+  window2.setFocusable(true);
+  window2.setAlwaysOnTop(true, "floating");
+  window2.setVisibleOnAllWorkspaces(true);
+  window2.setFullScreenable(false);
+  // window2.webContents.openDevTools()
   window2.on('closed', function () {
     window2 = null
   })
